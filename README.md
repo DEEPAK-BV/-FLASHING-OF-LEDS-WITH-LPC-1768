@@ -1,3 +1,6 @@
+## Name :Deepak B V
+## Reg no :212223060036
+## Slot :4X4-5
 # FLASHING-OF-LEDS-WITH-LPC-1768
 
 # AIM: 
@@ -11,7 +14,6 @@ LED
 KEIL MICRO VISION 4.0 IDE
 
 # PROCEDURE:
-
 
 ⮚	Open the Keil software and select the New uvision project from Project Menu as shown below.
 ⮚	Browse to your project folder and provide the project name and click on save.
@@ -42,17 +44,45 @@ Header:
 Delay.h, stdutils.h, gpioi.h
 
 # PIN DIAGRAM :
- 
+<img width="767" height="416" alt="image" src="https://github.com/user-attachments/assets/788618af-92f5-46cb-b742-d9b7db575a87" />
 
 # CIRCUIT DIAGRAM:
- 
- 
-# PROGRAM:
+<img width="715" height="366" alt="image" src="https://github.com/user-attachments/assets/6078a9ce-ba75-4f50-ad22-8066f4643baa" />
 
+# PROGRAM:
+~~~
+#include <lpc17xx.h>
+#include "delay.h"      
+#include "gpio.h"
+
+#define LED P1_29        
+
+/* start the main program */
+int main()
+{
+    SystemInit();                         
+    GPIO_PinFunction(LED,PINSEL_FUNC_0);   
+    GPIO_PinDirection(LED,OUTPUT);        
+    GPIO_PinWrite(LED,LOW);
+
+    while(1)
+    {
+        /* Turn On all the leds and wait for 100ms */
+        GPIO_PinWrite(LED,HIGH);           
+        DELAY_ms(100);
+
+        GPIO_PinWrite(LED,LOW);           
+        DELAY_ms(100);
+    }
+}
+~~~
 
  
 # Output:
+<img width="960" height="1280" alt="image" src="https://github.com/user-attachments/assets/ee34a328-f708-450c-b469-0fe69ed744aa" />
 
+## Result:
+Thus the LED is interfaced and toggled with ARM LPC1768 Microprocessor.
 
 
 
